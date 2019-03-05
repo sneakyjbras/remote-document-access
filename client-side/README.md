@@ -1,32 +1,23 @@
-##########################
-### Required Platform  ###
-##########################
+## Setup ##
+- Linux kali 4.18.0-kali3-amd64 #1 SMP Debian 4.18.20-2kali2 (2018-11-30) x86_64 GNU/Linux
+- OpenSSL 1.1.1a 20 Nov 2018
+- Python 2.7.15+ (default, Aug 31 2018, 11:56:52)
 
-# Linux setup:
-# Linux 4.9.0-kali3-amd64 x86_64 (name: Kali GNU/Linux, version: 2017.1)
+## Install dependencies ##
+Steps you should take:
+`apt update`
+`apt install python python-pip build-essential libssl-dev libffi-dev python-dev`
+`apt install openssl`
+If needed, follow this installer to install openssl manually: https://websiteforstudents.com/manually-install-the-latest-openssl-toolkit-on-ubuntu-16-04-18-04-lts/ and remember to download the tar.gz from "https://www.openssl.org/source/openssl-1.1.1a.tar.gz", so you can download the used version "1.1.1a", and substitute 1.1.1 for 1.1.1a in all steps.
 
-##########################
-### SETUP INSTRUCTIONS ###
-##########################
+`chmod +x client.py utils/*.sh`
+`pip install -r requirements.txt`
+Extra step for activating argcomplete module:
+`activate-global-python-argcomplete` and restart shell so it takes effect
 
-# FIRST TIME DEPLOYMENT:
+Client is now set up.
 
-# Relevant steps:
-# our app is stable using OpenSSL version "OpenSSL 1.1.1a  20 Nov 2018" and Python version "Python 2.7.15+ (default, Aug 31 2018, 11:56:52)"
-# if update is needed run:
-apt-get update
-apt-get install python
-apt-get install python-pip
-apt-get install build-essential libssl-dev libffi-dev python-dev
-apt-get install openssl 		# if needed, follow this installer to install it manually: https://websiteforstudents.com/manually-install-the-latest-openssl-toolkit-on-ubuntu-16-04-18-04-lts/ ; just remember to download it from "https://www.openssl.org/source/openssl-1.1.1a.tar.gz", so you can download the used version "1.1.1a", and substitute 1.1.1 for 1.1.1a in all steps
-chmod +x client.py
-chmod +x utils/*.sh
-pip install -r requirements.txt
-# extra step for activating argcomplete module and, hence, being able to autocomplete the args for facilitated usage
-# run:
-activate-global-python-argcomplete
-# and close the shell afterwards.
-
+## Test it ##
 # Read client options
 python client.py -h
 python client.py
