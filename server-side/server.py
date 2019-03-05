@@ -983,10 +983,10 @@ def wait_for_clients(main_server_socket, initial_ssl_context):
         print "[!][" + now() + "] CTRL-C: Server shutting down..."
         exit()
     # REMEMBERME: switch to multi threading
-    threaded_clienthandler(client_ip, serving_port, serving_socket, initial_ssl_context) # debugging without multi-threading 
+    #threaded_clienthandler(client_ip, serving_port, serving_socket, initial_ssl_context) # debugging without multi-threading 
     # deal with new connection by creating a new thread
-    #handler_thread = threading.Thread(target=threaded_clienthandler, args=(client_ip, serving_port, serving_socket, initial_ssl_context))
-    #handler_thread.start()
+    handler_thread = threading.Thread(target=threaded_clienthandler, args=(client_ip, serving_port, serving_socket, initial_ssl_context))
+    handler_thread.start()
 
 def server():
     simple_banner = "###################### SIRS-SERVER ######################"
