@@ -1,0 +1,8 @@
+# client files on the server
+server-side/clients/
+
+# pyc files
+client-side/utils/aux-py-modules/AESCipher.pyc
+
+# client certificates
+client-side/utils/mycerts/

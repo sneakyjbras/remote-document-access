@@ -40,14 +40,14 @@ mkdir server/
 # (building client-side trust anchor: authenticate server)
 # Generate CA Key and CA self-signed Certificate
 openssl genrsa -out ca/sirs-ca.key 2048
-openssl req -new -x509 -key ca/sirs-ca.key -out ca/sirs-ca.crt -config confs/ca_crt_config.conf
+openssl req -new -x509 -key ca/sirs-ca.key -out ca/sirs-ca.crt -days 7300 -config confs/ca_crt_config.conf
 
 # (building server-side trust anchor: authenticate clients)
 # Generate Client-Signing-Certificate, which will be another self-signed CA by itself,
 # but will be shared with the client through a secure and authenticated socket, so client
 # will be granted certainty that this certificate is coming from the server
 openssl genrsa -out cli-signing-ca/sirs-cli-signing-ca.key 2048
-openssl req -new -x509 -key cli-signing-ca/sirs-cli-signing-ca.key -out cli-signing-ca/sirs-cli-signing-ca.crt -config confs/cli-signing-ca_crt_config.conf
+openssl req -new -x509 -key cli-signing-ca/sirs-cli-signing-ca.key -out cli-signing-ca/sirs-cli-signing-ca.crt -days 7300 -config confs/cli-signing-ca_crt_config.conf
 
 # Generate Server Keys and Server Certificate Signing Request (CSR)
 # Use the csr config file to generate both a certificate signing request
@@ -57,5 +57,5 @@ mv sirs-server.csr sirs-server.key server/
 
 
 # Sign and release a new certificate for the server, signed by the ca
-openssl x509 -req -in server/sirs-server.csr -sha1 -CA ca/sirs-ca.crt -CAkey ca/sirs-ca.key -CAcreateserial -out server/sirs-server.crt
+openssl x509 -req -in server/sirs-server.csr -sha1 -CA ca/sirs-ca.crt -CAkey ca/sirs-ca.key -CAcreateserial -days 7300 -out server/sirs-server.crt
 rm server/sirs-server.csr
