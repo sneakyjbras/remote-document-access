@@ -1,6 +1,6 @@
 # Remote Document Access
 
-**Project IDs:** [João Meira](github.com/meiraxx) · [José Brás](github.com/sneakyjbras)
+**Contributors:** [João Meira](github.com/meiraxx) · [José Brás](github.com/sneakyjbras)
 
 ## Objective
 Provide clients with a secure way to store, retrieve, and share documents through a remote server.
